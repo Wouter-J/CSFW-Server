@@ -6,4 +6,4 @@ Webmanagement, keeping track of clients, products & services.
 
 server: `git subtree push --prefix server heroku-server master`
 
-client: ``
+client: `git subtree push --prefix client heroku-client master`
