@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 //Added components
 import { UsecasesComponent } from './about/usecases/usecases.component';
-import { UsecaseComponent } from './about/usecases/usecase/usecase.component'
+import { UsecaseComponent } from './about/usecases/usecase/usecase.component';
 
 @NgModule({
   declarations: [
