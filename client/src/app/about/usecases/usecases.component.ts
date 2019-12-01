@@ -11,6 +11,7 @@ export class UsecasesComponent implements OnInit {
   readonly ADMIN_USER = 'Administrator'
   readonly NO_USER = 'Gast'
 
+  //TODO: Add atleast 5 more usescases, minimum is 9
   useCases: UseCase[] = [
     {
       id: 'UC-01',
