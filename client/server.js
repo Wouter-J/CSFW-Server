@@ -1,3 +1,4 @@
+//TODO: Update with content over at https://gitlab.com/avans-informatica-breda/programmeren/clientside-frameworks/angular-gitlab-heroku/blob/master/src/server.js
 //Install express server
 const express = require('express');
 const path = require('path');
