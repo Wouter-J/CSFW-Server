@@ -1,11 +1,12 @@
-<nav class="navbar navbar-default">
+<div class="navbar-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <h4 class="title">{{title}}</h4>
+      <a routerLink="/about">About this application</a>
+    </nav>
+</div>
+<div class="content">
   <div class="container-fluid">
-      <div class="navbar-header">
-          <h1>{{title}}</h1>
-          <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-            <a routerLink="/about">About this application</a>
-          </nav>
-      </div>
-      <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   </div>
-</nav>
+</div>
+
