@@ -1,13 +1,13 @@
 const 	express = require('express');
 const	path = require('path');
-const	mongoose = require('mongoose');
+const	mongoose = require('./config/db');
 const	cors = require('cors');
 const	bodyParser = require('body-parser');
-const	dbConfig = require('./db/db'); //TODO: replace this with dotenv config file
 const	swaggerUi = require('swagger-ui-express');
 const	swaggerJSDoc = require('swagger-jsdoc');
 const 	app = express();
 const 	router = require('./router');
+require('dotenv').config();
 
 //Swagger document definition
 const options = {
@@ -24,17 +24,6 @@ const options = {
 //Initialize swagger-js doc
 const swaggerSpec = swaggerJSDoc(options);
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
-//MongoDB Connection
-mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.db, {
-	useNewUrlParser: true
-}).then(() => {
-	console.log("MongoDB connected")
-}, error => {
-	console.log("MongoDB connection error: " + error)
-	//TODO: Add retry
-})
 
 //Express JS
 app.use(bodyParser.json());
