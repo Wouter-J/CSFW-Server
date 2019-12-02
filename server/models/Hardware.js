@@ -10,8 +10,11 @@ const hardwareSchema = new Schema({
     },
     ClientsSupported: {
         type: Number
+    },
+    Specifications: {
+        type: Schema.Types.ObjectId,
+        ref: 'Specification'
     }
-    //TODO: Add link to Specifications Schema
 })
 
 const Hardware = mongoose.model('Hardware', hardwareSchema);
