@@ -16,7 +16,6 @@ const specifcationSchema = new Schema({
         enum: ['GB', 'TB', 'Other'],
         default: 'GB'
     }
-    //TODO: Add link to Specifications Schema
 })
 
 const Specification = mongoose.model('Specification', specifcationSchema);
