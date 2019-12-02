@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router'
 //import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 //import { TooltipModule } from 'ngx-bootstrap/tooltip';
 //import { ModalModule } from 'ngx-bootstrap/modal';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api'; //Data simulation for dev & testing
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
