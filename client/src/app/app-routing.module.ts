@@ -4,11 +4,15 @@ import { RouterModule, Routes } from '@angular/router'; //Import for routing fun
 
 //Components etc
 import { UsecasesComponent } from './about/usecases/usecases.component'
+//Hardware components
+import { HardwareCreateComponent } from './hardware/hardware-create/hardware-create.component';
+import { HardwareListComponent } from './hardware/hardware-list/hardware-list.component';
 
 //Components we can navigate to
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full'},
   { path: 'about', component: UsecasesComponent },
+  { path: 'create-hardware', component: HardwareCreateComponent },
   { path: '**', redirectTo: '/' }
 ];
 

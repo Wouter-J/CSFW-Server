@@ -1,0 +1,17 @@
+<div class="row justify-content-center">
+    <div class="col-md-4 register-hardware">
+        <form [formGroup]="hardwareForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="inputName">Name</label>
+                <input class="form-control" type="text" formControlName="Name">
+                <!-- error -->
+                <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+                  Name is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success btn-lg btn-block" type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
