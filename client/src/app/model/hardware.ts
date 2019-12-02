@@ -1,5 +1,5 @@
 export class Hardware {
     Name: string;
-    clientCapacity: number;
-    clientsSupported: number;
+    ClientCapacity: number;
+    ClientsSupported: number;
 }

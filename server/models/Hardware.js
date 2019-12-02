@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let hardwareSchema = new Schema({
+const hardwareSchema = new Schema({
     Name: {
         type: String
     },

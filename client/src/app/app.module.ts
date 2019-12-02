@@ -4,15 +4,11 @@ import { RouterModule } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 //TODO: Verify with https://gitlab.com/avans-informatica-breda/programmeren/clientside-frameworks/angular-gitlab-heroku/blob/master/src/app/app.module.ts
-//Bootstrap
-//import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-//import { TooltipModule } from 'ngx-bootstrap/tooltip';
-//import { ModalModule } from 'ngx-bootstrap/modal';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api'; //Data simulation for dev & testing
 
 import { AppComponent } from './app.component'; 
 import { AppRoutingModule } from './app-routing.module';
-//Added components
+//Added components 
 import { UsecasesComponent } from './about/usecases/usecases.component';
 import { UsecaseComponent } from './about/usecases/usecase/usecase.component';
 import { HardwareCreateComponent } from './hardware/hardware-create/hardware-create.component';
@@ -31,10 +27,7 @@ import { HardwareApiService } from './service/hardware-api.service';
   ],
   imports: [
     BrowserModule,
-    RouterModule, 
-    //BsDropdownModule.forRoot(),
-    //TooltipModule.forRoot(),
-    //ModalModule.forRoot(),
+    RouterModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule

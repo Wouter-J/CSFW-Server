@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class HardwareApiService {
 
   // Create
   createHardware(data): Observable<any> {
-      let url = `${this.baseUri}/create`;
+      const url = `${this.baseUri}/create`;
       return this.http.post(url, data)
         .pipe(
           catchError(this.errorMgmt)

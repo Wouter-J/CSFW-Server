@@ -1,12 +1,12 @@
-let express = require('express'),
-	path = require('path'),
-	mongoose = require('mongoose'),
-	cors = require('cors'),
-	bodyParser = require('body-parser'),
-	dbConfig = require('./db/db') //TODO: replace this with dotenv config file
-	swaggerUi = require('swagger-ui-express'),
-	swaggerJSDoc = require('swagger-jsdoc')
-const app = express()
+const 	express = require('express');
+const	path = require('path');
+const	mongoose = require('mongoose');
+const	cors = require('cors');
+const	bodyParser = require('body-parser');
+const	dbConfig = require('./db/db'); //TODO: replace this with dotenv config file
+const	swaggerUi = require('swagger-ui-express');
+const	swaggerJSDoc = require('swagger-jsdoc';
+const 	app = express();
 
 //Swagger document definition
 const options = {
@@ -32,6 +32,7 @@ mongoose.connect(dbConfig.db, {
 	console.log("MongoDB connected")
 }, error => {
 	console.log("MongoDB connection error: " + error)
+	//TODO: Add retry
 })
 //Express JS
 const hardwareRoute = require('../server/routes/hardware.route');
@@ -48,24 +49,10 @@ const server = app.listen(port, () => {
 	console.log("Connected to port: " + port)
 })
 
-//Send 404 to error handler
-// app.use((req,res,next) => {
-// 	next(createError(404));
-// })
-
 app.use(function (err, req, res, next) {
 	console.error(err.message); 
-	if (!err.statusCode) err.statusCode = 500;
+	if (!err.statusCode) { err.statusCode = 500; } 
 	res.status(err.statusCode).send(err.message); 
-});
-
-/*
-app.listen(process.env.PORT || 5000, () => { 
-	if(process.env.PORT !== undefined){
-		console.log('Server gestart op poort '+process.env.PORT); 
-	} else {
-		console.log('Server gestart op poort 5000'); 
-	}
 });
 
 app.get('*', (req, res) => {
@@ -73,5 +60,5 @@ app.get('*', (req, res) => {
 		message: 'Application is running'
 	}).end();
 })
-*/
+
 module.exports = app;
