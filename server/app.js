@@ -5,8 +5,9 @@ const	cors = require('cors');
 const	bodyParser = require('body-parser');
 const	dbConfig = require('./db/db'); //TODO: replace this with dotenv config file
 const	swaggerUi = require('swagger-ui-express');
-const	swaggerJSDoc = require('swagger-jsdoc';
+const	swaggerJSDoc = require('swagger-jsdoc');
 const 	app = express();
+const 	router = require('./router');
 
 //Swagger document definition
 const options = {
@@ -34,14 +35,14 @@ mongoose.connect(dbConfig.db, {
 	console.log("MongoDB connection error: " + error)
 	//TODO: Add retry
 })
+
 //Express JS
-const hardwareRoute = require('../server/routes/hardware.route');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'dist/client')));
 app.use('/', express.static(path.join(__dirname, 'dist/client')));
-app.use('/api', hardwareRoute)
+app.use(router)
 
 //Port
 const port = process.env.PORT || 5000;
