@@ -45,10 +45,10 @@ app.use(function (err, req, res, next) {
 	res.status(err.statusCode).send(err.message); 
 });
 
-app.get('*', (req, res) => {
-	res.status(200).send({
-		message: 'Application is running'
-	}).end();
-})
+//app.get('*', (req, res) => {
+//	res.status(200).send({
+//		message: 'Application is running'
+//	}).end();
+//})
 
 module.exports = app;
