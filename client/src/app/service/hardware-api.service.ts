@@ -48,6 +48,14 @@ export class HardwareApiService {
     )
   }
 
+  // Delete
+  deleteHardware(id): Observable<any> {
+    console.log("Delete hardware called")
+    let url = `${this.baseUri}/${id}`;
+    return this.http.delete(url, { headers: this.headers }).pipe(
+      catchError(this.errorMgmt)
+    )
+  }
   //Errors go here
   //TODO: Clean this up, make this a service
   errorMgmt(error: HttpErrorResponse) {
