@@ -13,7 +13,7 @@ module.exports = {
     Login(req, res, next) {
         //Mock username for now
         const username = req.body.username;
-        const pwd = req.body.pwd;
+        const pwd = req.body.password;
         console.log(username + pwd)
         const DBusername = 'admin';
         const DBpwd = 'pwd';
