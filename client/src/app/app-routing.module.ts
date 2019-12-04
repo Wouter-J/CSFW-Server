@@ -11,7 +11,11 @@ import { HardwareCreateComponent } from './hardware/hardware-create/hardware-cre
 import { HardwareListComponent } from './hardware/hardware-list/hardware-list.component';
 import { HardwareEditComponent } from './hardware/hardware-edit/hardware-edit.component';
 import { HardwareDeleteComponent } from './hardware/hardware-delete/hardware-delete.component';
-
+//Spec components
+import { SpecCreateComponent } from './spec/spec-create/spec-create.component';
+import { SpecListComponent } from './spec/spec-list/spec-list.component';
+import { SpecEditComponent } from './spec/spec-edit/spec-edit.component';
+import { SpecDeleteComponent } from './spec/spec-delete/spec-delete.component';
 //Helpers
 import { Guard } from './_helpers/guard';
 
@@ -25,6 +29,10 @@ const routes: Routes = [
   { path: 'create-hardware', component: HardwareCreateComponent, canActivate: [Guard] },
   { path: 'edit-hardware/:id', component: HardwareEditComponent, canActivate: [Guard] },
   { path: 'delete-hardware', component: HardwareDeleteComponent, canActivate: [Guard] },
+  { path: 'list-spec', component: SpecListComponent},
+  { path: 'create-spec', component: SpecCreateComponent, canActivate: [Guard] },
+  { path: 'edit-spec/:id', component: SpecEditComponent, canActivate: [Guard] },
+  { path: 'delete-spec', component: SpecDeleteComponent, canActivate: [Guard] },
   { path: '**', redirectTo: '/' }
 ];
 
