@@ -23,18 +23,15 @@ export class HardwareEditComponent implements OnInit {
 
   ngOnInit() {
     this.updateHardware();
-  }
-  //TODO: Fix validators here, not working currently
-  updateHardware() {
+    let id = this.actRoute.snapshot.paramMap.get('id');
+    this.getHardware(id);
     this.editForm = this.fb.group({
       Name: ['', [Validators.required]],
-      //ClientCapacity: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      ClientCapacity: [],
-      ClientsSupported: [],
-      //phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
+      ClientCapacity: [''],
+      ClientsSupported: ['']
     })
   }
-
+  // Getter to access form control
   get myForm(){
     return this.editForm.controls;
   }
@@ -48,6 +45,16 @@ export class HardwareEditComponent implements OnInit {
         ClientsSupported: data['Support'],
       });
     });
+  }
+  
+  //TODO: Fix validators here, not working currently
+  updateHardware() {
+    this.editForm = this.fb.group({
+      Name: ['', [Validators.required]],
+      //ClientCapacity: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      ClientCapacity: [''],
+      ClientsSupported: [''],
+    })
   }
 
   onSubmit() {
