@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-md-4 register-hardware">
+      <!-- form card register -->
+      <div class="card card-outline-secondary">
+        <div class="card-header">
+          <h3 class="mb-0">Edit hardware</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+ 
+            <div class="form-group">
+              <label for="Name">Name</label>
+              <input class="form-control" type="text">
+              <div class="invalid-feedback" *ngIf="submitted && myForm.Name.errors?.required">
+                Name is required.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Capacity">Client Capacity</label>
+              <input class="form-control" type="text">
+              <!-- error 
+              <div class="invalid-feedback" *ngIf="submitted && myForm.number.errors?.required">
+                Enter the client capacaity
+              </div>
+              <div class="invalid-feedback" *ngIf="submitted && myForm.number.errors?.pattern">
+                Enter numbers only
+              </div> -->
+            </div>
+ 
+            <div class="form-group">
+              <label for="Support">Clients Supported</label>
+              <input class="form-control" type="text">
+              <!-- error
+              <div class="invalid-feedback" *ngIf="submitted && myForm.number.errors?.required">
+                Enter current number of clients supported
+              </div>
+              <div class="invalid-feedback" *ngIf="submitted && myForm.number.errors?.pattern">
+                Enter Numbers Only
+              </div>  -->
+            </div>
+ 
+            <div class="form-group">
+              <button class="btn btn-success btn-lg btn-block" type="submit">Update</button>
+            </div>
+          </form>
+        </div>
+      </div><!-- form  -->
+    </div>
+  </div>

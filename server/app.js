@@ -34,23 +34,11 @@ app.use(express.static(path.join(__dirname, 'dist/client')));
 app.use('/', express.static(path.join(__dirname, 'dist/client')));
 app.use(router)
 
-//Port
 const port = process.env.PORT || 5000;
-//By using => we have no need of ,function()
 const server = app.listen(port, () => {
 	console.log("Connected to port: " + port)
 })
 
-app.use(function (err, req, res, next) {
-	console.error(err.message); 
-	//if (!err.statusCode) { err.statusCode = 500; } 
-	//res.status(err.statusCode).send(err.message); 
-});
-
-//app.get('*', (req, res) => {
-//	res.status(200).send({
-//		message: 'Application is running'
-//	}).end();
-//})
+//TODO: Add proper error handler
 
 module.exports = app;

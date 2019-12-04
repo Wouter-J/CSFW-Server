@@ -1,11 +1,10 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-//By using => we have no need of ,function()
 const tokenAuth = (req, res, next) => {
     let token = req.headers['x-access-token'] || req.headers['authorization']; //Express headers
     console.log(token)
     if (token.startsWith('Bearer')) {
-        token = token.slice(7, token.length) // Renove Bearer from string
+        token = token.slice(7, token.length) // Remove Bearer from string
     }
 
     if(token) {

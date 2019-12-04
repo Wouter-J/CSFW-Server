@@ -18,7 +18,7 @@ export class HardwareListComponent implements OnInit {
   }
 
   readHardware() {
-    this.hardwareApiService.getHardware().subscribe((data) => {
+    this.hardwareApiService.getHardwares().subscribe((data) => {
       this.Hardware = data;
     })
   }

@@ -7,17 +7,21 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component'; 
 import { AppRoutingModule } from './app-routing.module';
+
+//Services
+import { HardwareApiService } from './service/hardware-api.service';
+
+//Helpers
+import { Interceptor } from './_helpers/interceptor';
+
 //Added components 
 import { UsecasesComponent } from './about/usecases/usecases.component';
 import { UsecaseComponent } from './about/usecases/usecase/usecase.component';
 import { HardwareCreateComponent } from './hardware/hardware-create/hardware-create.component';
 import { HardwareListComponent } from './hardware/hardware-list/hardware-list.component';
 import { LoginComponent } from './login/login.component';
-//Services
-import { HardwareApiService } from './service/hardware-api.service';
-
-//Helpers
-import { Interceptor } from './_helpers/interceptor'
+import { HardwareEditComponent } from './hardware/hardware-edit/hardware-edit.component';
+import { HardwareDeleteComponent } from './hardware/hardware-delete/hardware-delete.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import { Interceptor } from './_helpers/interceptor'
     UsecaseComponent, 
     HardwareCreateComponent,
     HardwareListComponent,
-    LoginComponent
+    LoginComponent,
+    HardwareEditComponent,
+    HardwareDeleteComponent
   ],
   imports: [
     BrowserModule,

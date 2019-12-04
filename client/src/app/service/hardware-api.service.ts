@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
@@ -24,8 +24,28 @@ export class HardwareApiService {
   }
   
   // Get all
-  getHardware() {
+  getHardwares() {
     return this.http.get(`${this.baseUri}`);
+  }
+
+  //Get one
+  getHardware(id): Observable<any> {
+    console.log("Get hardware called")
+    let url = `${this.baseUri}/${id}`;
+    return this.http.get(url, {headers: this.headers}).pipe(
+      map((res: Response) => {
+        return res || {}
+      }),
+      catchError(this.errorMgmt)
+    )
+  }
+  //Update
+  updateHardware(id, data): Observable<any> {
+    console.log("Updoot hardware called")
+    const url = `${this.baseUri}/${id}`;
+    return this.http.put(url, data, { headers: this.headers }).pipe(
+      catchError(this.errorMgmt)
+    )
   }
 
   //Errors go here

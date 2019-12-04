@@ -13,19 +13,7 @@ router.use('/api/hardware', hardwareRoute);
 router.use('/api/specs', specsRoute);
 router.use('/api/clients', clientsRoute);
 router.use('/api/services', servicesRoute);
-//router.use('/api/users', usersRoute);
-
-//Catching all other requests
-/*
-router.use("*", (req, res) => {
-    res
-      .status(404)
-      .send({
-        message: "404 not found"
-      })
-      .end();
-});
-*/
+//TODO: Add user route
 
 router.use("/tokens", authMiddleware, usersRoute);
 router.use("/login", usersRoute);
