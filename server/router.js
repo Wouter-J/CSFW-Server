@@ -27,7 +27,7 @@ router.use("*", (req, res) => {
 });
 */
 
-router.use("/tokens",authMiddleware, usersRoute);
+router.use("/tokens", authMiddleware, usersRoute);
 router.use("/login", usersRoute);
 
 module.exports = router;

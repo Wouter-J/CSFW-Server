@@ -12,7 +12,12 @@ module.exports = {
         })
     },
     Create(req, res, next) {
-        Hardware.create(req.body, (err, data) => {
+        const hardwareProps = {
+            Name: req.body.Name,
+            ClientCapacity: req.body.ClientCapacity,
+            ClientsSupported: req.body.ClientsSupported
+        }
+        Hardware.create(hardwareProps, (err, data) => {
             if(err) {
                 return next(err)
             } else {
