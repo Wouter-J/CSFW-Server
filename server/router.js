@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const authMiddleware = require('./middleware/auth');
 
 //Routes
 const hardwareRoute = require('./routes/hardware.route');
@@ -26,44 +27,24 @@ router.use("*", (req, res) => {
 });
 */
 
-router.use("/token-test", function(req, res, next){
-	let token = req.headers['authorization'] || req.headers['x-access-token']
-	if(token && token.startsWith("Bearer ")){
-		token = token.slice(7, token.length)
-		jwt.verify(token, secretKey, (err, decoded) => {
-		  if(err){
-			  res.status(401).json({
-				  result : false,
-				  message : "Token invalid"
-			  })
-		  } 
-		  else {
-			 next()
-		  }
-		}) 
-	} else {
-		res.status(400).json({
-			result : false,
-			message : "Token missing"
-		})
-	}
-})
-
+router.use("/tokens",authMiddleware, hardwareRoute);
+router.use("/login", hardwareRoute);
 //JWTToken
 var jwt = require("jsonwebtoken")
 router.use('/token', (req, res) => {
 	let token = jwt.sign({ 
-	email : "testmail@mail.com",
-	_id : "1234",
-	role : "User",
+		email : "testmail@mail.com",
+		_id : "1234",
+		role : "User",
 	},
-	"secretKey", 
-	{ expiresIn : '7d' }
-	)
+		"secretKey", 
+	{ expiresIn : '24h' }
+	);
+	console.log(token)
 	res.status(200).json({
-	success : true,
-	message : "Auth ok",
-	token : token
+		success : true,
+		message : "Auth ok",
+		token : token
 	})
 })
 
