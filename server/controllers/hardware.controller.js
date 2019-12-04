@@ -1,4 +1,5 @@
-let Hardware = require('../models/Hardware');
+const Hardware = require('../models/Hardware');
+const Specs = require('../models/Specs');
 
 //TODO: Finish crud functionalities
 module.exports = {
@@ -15,7 +16,8 @@ module.exports = {
         const hardwareProps = {
             Name: req.body.Name,
             ClientCapacity: req.body.ClientCapacity,
-            ClientsSupported: req.body.ClientsSupported
+            ClientsSupported: req.body.ClientsSupported,
+            Specifications: ['']
         }
         Hardware.create(hardwareProps, (err, data) => {
             if(err) {
@@ -25,6 +27,40 @@ module.exports = {
             }
         });
     },
+    ReadSpec(req, res, next) {
+        const HardwareID = req.params.id;
+
+        Hardware.findById(HardwareID)
+            .populate('Specification')
+            .orFail(() => Error('Not found'))
+            .then(hardware => res.send(hardware))
+            .catch(next);
+    },
+    AddSpec(req, res, next) {
+        const HardwareID = req.params.id;
+        const SpecsProps = {
+            Name: req.body.Name,
+            Type: req.body.Type,
+            Amount: req.body.Amount,
+            AmountType: req.body.AmountType,
+        };
+        //var newSpecID; //Variable for temporarly storing ID, can be used if wanting to switch over to ID's
+
+        Hardware.findById(HardwareID)
+            .orFail(() => Error('Not found'))
+            .then(() => Specs.create(SpecsProps)) //If Hardware found, create specification
+            //.then(spec => {
+            //    newSpecID = spec._id;
+            //})
+            .then(() => Hardware.findByIdAndUpdate(HardwareID, {
+                "$push": {
+                    Specifications: SpecsProps,  //We could also add a reference to just the specification if collections grow too large.
+                   
+                }
+            }))
+            .catch(next);
+    },
+    //TODO: Add function to add existing specs to existing Hardware
     Read(req, res, next) {
         const HardwareID = req.params.id;
         Hardware.findById(HardwareID)

@@ -1,4 +1,4 @@
-let Clients = require('../models/Clients')
+const Clients = require('../models/Clients')
 
 module.exports = {
     Index(req, res, next) {

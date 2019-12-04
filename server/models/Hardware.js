@@ -11,10 +11,10 @@ const hardwareSchema = new Schema({
     ClientsSupported: {
         type: Number
     },
-    Specifications: {
-        type: Schema.Types.ObjectId,
+    Specifications: [{
+        type: Schema.Types.Mixed,
         ref: 'Specification'
-    }
+    }]
 })
 
 const Hardware = mongoose.model('Hardware', hardwareSchema);

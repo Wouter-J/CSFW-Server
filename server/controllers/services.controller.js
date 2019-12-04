@@ -1,4 +1,4 @@
-let Service = require('../models/Services');
+const Service = require('../models/Services');
 
 //TODO: Finish crud functionalities
 module.exports = {

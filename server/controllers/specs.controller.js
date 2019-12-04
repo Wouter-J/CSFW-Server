@@ -1,4 +1,4 @@
-let Specs = require('../models/Specs')
+const Specs = require('../models/Specs');
 
 module.exports = {
     Index(req, res, next) {
