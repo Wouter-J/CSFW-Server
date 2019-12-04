@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 
 export class HardwareApiService {
 
-  baseUri:string = environment.serverurl + "/hardware";
+  baseUri:string = environment.serverurl + "/api/hardware";
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private http: HttpClient) { }
 

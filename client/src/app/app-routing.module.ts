@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'about', component: UsecasesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'create-hardware', component: HardwareCreateComponent, canActivate: [Guard] },
+  { path: 'list-hardware', component: HardwareListComponent},
   { path: '**', redirectTo: '/' }
 ];
 

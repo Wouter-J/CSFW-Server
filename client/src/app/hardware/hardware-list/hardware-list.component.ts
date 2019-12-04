@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HardwareApiService } from '../../service/hardware-api.service';
 
 @Component({
   selector: 'app-hardware-list',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HardwareListComponent implements OnInit {
 
-  constructor() { }
+  Hardware: any = [];
+
+  constructor(private hardwareApiService: HardwareApiService) { 
+    this.readHardware();
+  }
 
   ngOnInit() {
+  }
+
+  readHardware() {
+    this.hardwareApiService.getHardware().subscribe((data) => {
+      this.Hardware = data;
+    })
   }
 
 }
