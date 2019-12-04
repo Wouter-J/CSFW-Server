@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //serverurl: 'https://csfw-server.herokuapp.com/api'
-  serverurl: 'http://localhost:5000'
+  serverurl: 'https://csfw-server.herokuapp.com/api'
+  //serverurl: 'http://localhost:5000'
 };
 
 /*
