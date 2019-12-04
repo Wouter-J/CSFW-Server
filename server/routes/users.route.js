@@ -11,5 +11,6 @@ const usersController = require('../controllers/users.controller');
 //Temp test
 routes.get('/', usersController.Test);
 routes.post('/', usersController.Login);
+routes.post('/register', usersController.Register);
 
 module.exports = routes;

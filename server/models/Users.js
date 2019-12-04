@@ -8,6 +8,9 @@ const userSchema = new Schema({
     Birthdate: {
         type: Date
     },
+    Password: { //TODO: Add bcrypt hash
+        type: String
+    },
     Role: {
         type: String,
         enum: ['User', 'Administrator'],

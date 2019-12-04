@@ -21,7 +21,8 @@ import { HardwareCreateComponent } from './hardware/hardware-create/hardware-cre
 import { HardwareListComponent } from './hardware/hardware-list/hardware-list.component';
 import { LoginComponent } from './login/login.component';
 import { HardwareEditComponent } from './hardware/hardware-edit/hardware-edit.component';
-import { HardwareDeleteComponent } from './hardware/hardware-delete/hardware-delete.component'
+import { HardwareDeleteComponent } from './hardware/hardware-delete/hardware-delete.component';
+import { RegisterComponent } from './register/register.component'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HardwareDeleteComponent } from './hardware/hardware-delete/hardware-del
     HardwareListComponent,
     LoginComponent,
     HardwareEditComponent,
-    HardwareDeleteComponent
+    HardwareDeleteComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ router.use('/api/hardware', hardwareRoute);
 router.use('/api/specs', specsRoute);
 router.use('/api/clients', clientsRoute);
 router.use('/api/services', servicesRoute);
-//TODO: Add user route
+router.use('/api/user', usersRoute);
 
 router.use("/tokens", authMiddleware, usersRoute);
 router.use("/login", usersRoute);
