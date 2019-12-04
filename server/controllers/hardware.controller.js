@@ -39,23 +39,22 @@ module.exports = {
     AddSpec(req, res, next) {
         const HardwareID = req.params.id;
         const SpecsProps = {
+            ID: '',
             Name: req.body.Name,
             Type: req.body.Type,
             Amount: req.body.Amount,
             AmountType: req.body.AmountType,
         };
-        //var newSpecID; //Variable for temporarly storing ID, can be used if wanting to switch over to ID's
 
         Hardware.findById(HardwareID)
             .orFail(() => Error('Not found'))
             .then(() => Specs.create(SpecsProps)) //If Hardware found, create specification
-            //.then(spec => {
-            //    newSpecID = spec._id;
-            //})
+            .then(spec => {
+                SpecsProps.ID = spec._id;
+            })
             .then(() => Hardware.findByIdAndUpdate(HardwareID, {
                 "$push": {
                     Specifications: SpecsProps,  //We could also add a reference to just the specification if collections grow too large.
-                   
                 }
             }))
             .catch(next);
