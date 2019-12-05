@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverurl: 'https://csfw-server.herokuapp.com/'
+  serverurl: 'https://csfw-server.herokuapp.com'
   //serverurl: 'http://localhost:5000'
 };
 
