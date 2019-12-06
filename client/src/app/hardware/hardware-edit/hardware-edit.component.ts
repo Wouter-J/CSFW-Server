@@ -59,8 +59,6 @@ export class HardwareEditComponent implements OnInit {
 
   onSubmit() {
     console.log("Submitted")
-    console.log(this.editForm.value)
-    console.log(this.editForm.valid)
     this.submitted = true;
     if (!this.editForm.valid) {
       return false;

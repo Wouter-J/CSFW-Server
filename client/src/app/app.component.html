@@ -1,15 +1,32 @@
+<style>
+li.nav-item {
+    list-style-type: none;
+}
+</style>
 <div class="navbar-header">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <a routerLink="">
         <h4 class="title">{{title}} | </h4>
       </a>   
-      <a routerLink="/about">About this application</a>
-      <a routerLink="/list-hardware">Hardware List</a>
-      <a routerLink="/create-hardware">Add Hardware</a>
-      <a routerLink="/list-spec">Specification List</a>
-      <a routerLink="/create-spec">Add Specification</a>
-      <a routerLink="/register">Register</a>
-      <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about">About this application</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/list-hardware">Hardware List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/create-hardware">Add Hardware</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item" routerLink="/create-spec">Add Specification </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item" routerLink="/register"> | Register</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      </li>
+      <!--<a routerLink="/list-spec">Specification List</a>-->
     </nav>
 </div>
 <div class="content">

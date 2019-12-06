@@ -25,8 +25,8 @@ export class HardwareCreateComponent implements OnInit {
   mainForm() {
     this.hardwareForm = this.fb.group({
       Name: ['', [Validators.required]],
-      //clientCapacity: [],
-      //clientsSupported: []
+      ClientCapacity: [],
+      ClientsSupported: []
     })
   }
 
@@ -41,6 +41,7 @@ export class HardwareCreateComponent implements OnInit {
     this.HardwareApiService.createHardware(this.hardwareForm.value).subscribe(
       (res) => {
         console.log("Hardware created");
+        this.router.navigateByUrl('/list-hardware');
       }, (error) => {
         console.log(error);
       }

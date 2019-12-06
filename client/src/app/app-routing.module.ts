@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'create-hardware', component: HardwareCreateComponent, canActivate: [Guard] },
   { path: 'edit-hardware/:id', component: HardwareEditComponent, canActivate: [Guard] },
   { path: 'delete-hardware', component: HardwareDeleteComponent, canActivate: [Guard] },
-  { path: 'list-spec', component: SpecListComponent},
+ // { path: 'list-spec', component: SpecListComponent},
   { path: 'create-spec', component: SpecCreateComponent, canActivate: [Guard] },
   { path: 'edit-spec/:id', component: SpecEditComponent, canActivate: [Guard] },
   { path: 'delete-spec', component: SpecDeleteComponent, canActivate: [Guard] },
