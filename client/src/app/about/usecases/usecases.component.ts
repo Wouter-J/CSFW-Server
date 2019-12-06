@@ -38,7 +38,7 @@ export class UsecasesComponent implements OnInit {
       precondition: 'Geen',
       postcondition: 'Een gebruiker is aangemaakt'
     },
-    {
+    /*{ 
       id: 'UC-03',
       name: 'Client registreren',
       description: 'Hiermee wordt een nieuwe client geregistreerd in de applicatie',
@@ -68,9 +68,9 @@ export class UsecasesComponent implements OnInit {
       actor: this.PLAIN_USER,
       precondition: 'De gebruiker is ingelogd, client en service bestaan',
       postcondition: 'Een nieuwe service is gekoppeld aan een client'
-    },
+    }, */
     {
-      id: 'UC-05',
+      id: 'UC-03',
       name: 'Specificaties koppelen aan Hardware',
       description: 'Hiermee wordt een specificatie gekoppeld aan bestaande hardware',
       scenario: [
@@ -83,7 +83,7 @@ export class UsecasesComponent implements OnInit {
       ],
       actor: this.PLAIN_USER,
       precondition: 'De gebruiker is ingelogd, client en service bestaan',
-      postcondition: 'Een nieuwe service is gekoppeld aan een client'
+      postcondition: 'Een nieuwe specificatie is gekoppeld aan een client'
     },
   ]
 

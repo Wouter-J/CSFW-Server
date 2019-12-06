@@ -24,7 +24,7 @@ export class HardwareEditComponent implements OnInit {
   ngOnInit() {
     this.updateHardware();
     let id = this.actRoute.snapshot.paramMap.get('id');
-    this.getHardware(id);
+    //this.getHardware(id);
     this.editForm = this.fb.group({
       Name: ['', [Validators.required]],
       ClientCapacity: [''],
@@ -35,19 +35,19 @@ export class HardwareEditComponent implements OnInit {
   get myForm(){
     return this.editForm.controls;
   }
-
+/*
   getHardware(id) {
     this.hardwareApiService.getHardware(id).subscribe(data => {
       console.log(data)
       this.editForm.setValue({
         Name: data['Name'],
-        ClientCapacity: data['Capacity'],
-        ClientsSupported: data['Support'],
+        ClientCapacity: data['ClientCapacity'],
+        ClientsSupported: data['ClientsSupported'],
       });
     });
   }
-  
-  //TODO: Fix validators here, not working currently
+  */
+
   updateHardware() {
     this.editForm = this.fb.group({
       Name: ['', [Validators.required]],
@@ -65,6 +65,7 @@ export class HardwareEditComponent implements OnInit {
     if (!this.editForm.valid) {
       return false;
       //TODO: Send back feedback on false data
+      window.location.reload();
     } else {
       if (window.confirm('Are you sure?')) {
         let id = this.actRoute.snapshot.paramMap.get('id');

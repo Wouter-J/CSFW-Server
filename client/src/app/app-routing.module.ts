@@ -21,7 +21,7 @@ import { Guard } from './_helpers/guard';
 
 //Components we can navigate to
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full'},
+  { path: '', redirectTo: 'about', pathMatch: 'full'},
   { path: 'about', component: UsecasesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

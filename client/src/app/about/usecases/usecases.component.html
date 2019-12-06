@@ -31,7 +31,7 @@
   
   <h3>Entiteiten</h3>
   <div class="row">
-    <div class="col-sm-12 col-md-3">
+    <div class="col-sm-12 col-md-4">
       <p>Gebruikers (Entiteit 1)</p>
       <ul>
         <li>naam: string</li>
@@ -40,6 +40,7 @@
         <li>rol: Enum[Rol]</li>
       </ul>
     </div>
+    <!--
     <div class="col-sm-12 col-md-3">
       <p>Clienten (Entiteit 2)</p>
       <ul>
@@ -49,8 +50,9 @@
         <li>client-services: -</li>
       </ul>
     </div>
-    <div class="col-sm-12 col-md-3">
-      <p>Hardware (Entiteit 3)</p>
+    -->
+    <div class="col-sm-12 col-md-4">
+      <p>Hardware (Entiteit 2)</p>
       <ul>
         <li>naam: string</li>
         <li>id: number</li>
@@ -59,6 +61,8 @@
         <li>Specificaties: List[Specificaties]</li>
       </ul>
     </div>
+  
+    <!--
     <div class="col-sm-12 col-md-3">
         <p>Services (Entiteit 4)</p>
         <ul>
@@ -68,10 +72,10 @@
           <li>kosten: number</li>
         </ul>
       </div>
-  </div>
+  </div> -->
   <div class="row">
-      <div class="col-sm-12 col-md-3">
-          <p>Specificaties (Entiteit 5)</p>
+      <div class="col-sm-12 col-md-12">
+          <p>Specificaties (Entiteit 3)</p>
           <ul>
             <li>id: number</li>
             <li>type: string</li>
@@ -83,6 +87,7 @@
     <div class="col-12">
       <h3>Use Cases</h3>
       <p>De applicatie biedt de volgende functionaliteit.</p>
+      <p>Hierin is de basis CRUD niet meegenomen</p>
       <div *ngFor="let UC of useCases">
         <app-usecase [useCase]="UC"></app-usecase>
       </div>
