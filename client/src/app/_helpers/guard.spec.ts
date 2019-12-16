@@ -17,9 +17,9 @@ class MockAuthService {}
 describe('Guard', () => {
   let service;
 
-  beforeEach(() => {
-    service = new Guard({}, {});
-  });
+  //beforeEach(() => {
+  //  service = new Guard({}, {});
+  //});
 
   it('should run #canActivate()', async () => {
     service.authenticationService = service.authenticationService || {};
