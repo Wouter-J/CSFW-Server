@@ -13,8 +13,6 @@ module.exports = {
             Password: req.body.Password,
             Role: 'User'
         }
-        console.log(userProps.Username)
-        console.log(userProps.Password)
         User.create(userProps, (err, data) => {
             if(err) {
                 return next(err)
@@ -29,7 +27,6 @@ module.exports = {
             if (error) {
               return next(error)
             } else {
-              console.log(data);
               res.json(data)
             }
         })
@@ -47,8 +44,8 @@ module.exports = {
         const UserID = req.params.id;
         const userProps = {
             Username: req.body.Username,
-            Firstname: req.body.firstname,
-            Lastname: req.body.lastname
+            Firstname: req.body.Firstname,
+            Lastname: req.body.Lastname
         };
 
         User.findByIdAndUpdate(UserID, userProps)
