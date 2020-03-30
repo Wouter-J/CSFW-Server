@@ -2,11 +2,17 @@ const mongoose = require('../config/db');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    Name: {
+    Username: {
         type: String
     },
     Birthdate: {
         type: Date
+    },
+    Firstname: {
+        type: String
+    },
+    Lastname: {
+        type: String
     },
     Password: { //TODO: Add bcrypt hash
         type: String
