@@ -7,11 +7,13 @@ module.exports = {
     Register(req, res, next) {
         console.log("Server register called")
         const userProps = {
-            Name: req.body.username,
-            Password: req.body.password,
+            Username: req.body.Username,
+            Firstname: req.body.Firstname,
+            Lastname: req.body.Lastname,
+            Password: req.body.Password,
             Role: 'User'
         }
-        console.log(userProps.Name)
+        console.log(userProps.Username)
         console.log(userProps.Password)
         User.create(userProps, (err, data) => {
             if(err) {
@@ -27,6 +29,7 @@ module.exports = {
             if (error) {
               return next(error)
             } else {
+              console.log(data);
               res.json(data)
             }
         })
@@ -43,7 +46,7 @@ module.exports = {
     Edit(req, res, next) {
         const UserID = req.params.id;
         const userProps = {
-            Name: req.body.username,
+            Username: req.body.Username,
             Firstname: req.body.firstname,
             Lastname: req.body.lastname
         };
@@ -55,24 +58,24 @@ module.exports = {
     },
     //Login
     Login(req, res, next) {
-        const username = req.body.username;
-        const pwd = req.body.password;
-        console.log(username + pwd)
+        const Username = req.body.Username;
+        const pwd = req.body.Password;
+        console.log(Username + pwd)
         var DBusername = '';
         var DBpwd = '';
 
         //Get user from DB
         //TODO: Use hashes for passwords
-        User.findOne({ Name: username, Password: pwd}, (err, data) => {
+        User.findOne({ Username: Username, Password: pwd}, (err, data) => {
             if(err) {
                 return next(err)
             } else {
                 //TODO: Use better names
-                DBusername = username;
+                DBusername = Username;
                 DBpwd = pwd;
-                if (username && pwd) {
-                    if (username === DBusername && pwd === DBpwd) { //verify username & pwd with db, assume it's correct for now
-                        let token = jwt.sign({username: username},
+                if (Username && pwd) {
+                    if (Username === DBusername && pwd === DBpwd) { //verify Username & pwd with db, assume it's correct for now
+                        let token = jwt.sign({Username: Username},
                         process.env.secretToken,
                         { expiresIn: '24h' }) //token duration is 24h
                         req.headers.authorization = token; // Not best practice
@@ -83,7 +86,7 @@ module.exports = {
                         })
                     } else { res.send(403).json({
                         success: false,
-                        message: 'Incorrect username or password'
+                        message: 'Incorrect Username or Password'
                       }); }
                 } else { res.send(400).json({
                     success: false,
