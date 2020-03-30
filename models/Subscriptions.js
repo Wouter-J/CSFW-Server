@@ -1,7 +1,7 @@
 const mongoose = require('../config/db');
 const Schema = mongoose.Schema;
 
-const serviceSchema = new Schema({
+const subscriptionSchema = new Schema({
     Name: {
         type: String
     },
@@ -11,6 +11,6 @@ const serviceSchema = new Schema({
     //TODO: Add link to Client Schema
 })
 
-const Service = mongoose.model('Service', serviceSchema);
+const Subscription = mongoose.model('Subscription', subscriptionSchema);
 
-module.exports = Service
+module.exports = Subscription
