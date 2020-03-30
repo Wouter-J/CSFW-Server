@@ -3,13 +3,57 @@ require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
 module.exports = {
-    //TODO: Add Crud functions
-    Test(req, res, next) {
-        res.json({
-            success: true,
-            message: 'Index page'
+    //Create
+    Register(req, res, next) {
+        console.log("Server register called")
+        const userProps = {
+            Name: req.body.username,
+            Password: req.body.password,
+            Role: 'User'
+        }
+        console.log(userProps.Name)
+        console.log(userProps.Password)
+        User.create(userProps, (err, data) => {
+            if(err) {
+                return next(err)
+            } else {
+                res.json(data)
+            }
         });
     },
+    //Read All
+    Index(req, res, next) {
+        User.find((error, data) => {
+            if (error) {
+              return next(error)
+            } else {
+              res.json(data)
+            }
+        })
+    },
+    //Read One
+    Read(req, res, next) {
+        const UserID = req.params.id;
+        User.findById(UserID)
+            .orFail(() => Error('User not found'))
+            .then(user => res.send(user))
+            .catch(next);
+    },
+    //Update
+    Edit(req, res, next) {
+        const UserID = req.params.id;
+        const userProps = {
+            Name: req.body.username,
+            Firstname: req.body.firstname,
+            Lastname: req.body.lastname
+        };
+
+        User.findByIdAndUpdate(UserID, userProps)
+            .orFail(() => Error('User not found'))
+            .then(user => res.send(user))
+            .catch(next);
+    },
+    //Login
     Login(req, res, next) {
         const username = req.body.username;
         const pwd = req.body.password;
@@ -47,22 +91,5 @@ module.exports = {
                   });}
             }
         }).catch(next)
-    },
-    Register(req, res, next) {
-        console.log("Server register called")
-        const userProps = {
-            Name: req.body.username,
-            Password: req.body.password,
-            Role: 'User'
-        }
-        console.log(userProps.Name)
-        console.log(userProps.Password)
-        User.create(userProps, (err, data) => {
-            if(err) {
-                return next(err)
-            } else {
-                res.json(data)
-            }
-        });
     }
 }

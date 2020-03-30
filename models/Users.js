@@ -8,6 +8,12 @@ const userSchema = new Schema({
     Birthdate: {
         type: Date
     },
+    Firstname: {
+        type: String
+    },
+    Lastname: {
+        type: String
+    },
     Password: { //TODO: Add bcrypt hash
         type: String
     },
