@@ -1,5 +1,5 @@
 const express = require('express');
-var routes = express.Router();
+const routes = express.Router();
 const usersController = require('../controllers/users.controller');
 
 routes.get('/', usersController.Index);
