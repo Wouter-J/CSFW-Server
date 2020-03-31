@@ -47,7 +47,7 @@ module.exports = {
   //Login
   Login: ({ body: { Username, Password } }, res, next) => {
     //Get user from DB
-    User.findOne({ Username, Password }, (err, data) => {
+    User.findOne({  Username, Password }, (err, data) => {
       if (err) {
         console.error(err);
         return next(err);
@@ -68,6 +68,7 @@ module.exports = {
       res.json({
         success: true,
         message: "Auth successful",
+        id: data._id,
         token
       });
     }).catch(next);
