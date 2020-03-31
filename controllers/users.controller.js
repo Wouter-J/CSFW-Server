@@ -30,10 +30,11 @@ module.exports = {
     });
   },
   //Read One
-  Read: ({ params: id }, res, next) => {
-    User.findById(id)
+  Read(req, res, next) {
+    const UserID = req.params.id;  
+    User.findById(UserID)
       .orFail(() => Error("User not found"))
-      .then(user => res.status(200).json(user))
+      .then(user => res.send(user))
       .catch(next);
   },
   //Update
