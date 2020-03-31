@@ -70,6 +70,12 @@ module.exports = {
                 //TODO: Use better names
                 DBusername = Username;
                 DBpwd = pwd;
+                console.log("Submitted");
+                console.log(Username);
+                console.log(pwd);
+                console.log("DB");
+                console.log(DBusername);
+                console.log(DBpwd); 
                 if (Username && pwd) {
                     if (Username === DBusername && pwd === DBpwd) { //verify Username & pwd with db, assume it's correct for now
                         let token = jwt.sign({Username: Username},
