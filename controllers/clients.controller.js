@@ -36,8 +36,8 @@ module.exports = {
     Edit: ({ body: { Name, Firstname, Lastname, Subs}, params: { id } }, res, next) => {
         Subscriptions.find({
             '_id': { $in: Subs}
-        }, function(err, data) {
-            const Subscriptions = data;
+        }, (err, Subscriptions) => {
+            console.log(Subscriptions);
             Clients.findByIdAndUpdate(id, {Name, Firstname, Lastname, Subscriptions})
                 .orFail(() => Error('Client or subscription not found'))
                 .then(client => res.status(200).json(client))
