@@ -36,7 +36,7 @@ module.exports = {
             .then(hardware => res.send(hardware))
             .catch(next);
     },
-    AddSpec(req, res, next) {
+    AddNewSpec(req, res, next) {
         const HardwareID = req.params.id;
         const SpecsProps = {
             ID: '',
@@ -56,10 +56,31 @@ module.exports = {
                 "$push": {
                     Specifications: SpecsProps,  //We could also add a reference to just the specification if collections grow too large.
                 }
-            }))
-            .catch(next);
+            }))            
+            .then(() => { return res.status(201).json({ message: "Success" }) } )
+            .catch(next)
+            .catch((err) => { 
+                res.status(500).json({ message: "Something went wrong " + err })
+            });
     },
-    //TODO: Add function to add existing specs to existing Hardware
+    AddExistingSpec(req, res, next) {
+        const HardwareID = req.params.id;
+        const SpecID    = req.body.ID;
+
+        Hardware.findById(HardwareID)
+            .orFail(() => Error('Not found'))
+            .then(() => Specs.findById(SpecID))
+            .then(() => Hardware.findByIdAndUpdate(HardwareID, {
+                "$push": {
+                    Specifications: res.spec,  //We could also add a reference to just the specification if collections grow too large.
+                }
+            }))
+            .then(() => { return res.status(201).json({ message: "Success" }) } )
+            .catch(next)
+            .catch((err) => { 
+                res.status(500).json({ message: "Something went wrong " + err })
+            });
+    },
     Read(req, res, next) {
         const HardwareID = req.params.id;
         Hardware.findById(HardwareID)
@@ -69,16 +90,23 @@ module.exports = {
     },
     Edit(req, res, next) {
         const HardwareID = req.params.id;
+        const specs = req.body.Specifications;
         const HardwareProps = {
             Name: req.body.Name,
             ClientCapacity: req.body.ClientCapacity,
-            ClientsSupported: req.body.ClientsSupported
+            ClientsSupported: req.body.ClientsSupported,
+            Specifications: req.body.Specifications
         };
-
-        Hardware.findByIdAndUpdate(HardwareID, HardwareProps)
+        Specs.find({
+            '_id': { $in: specs}
+        }, function(err, data){
+            HardwareProps.Specifications = data;
+            console.log(HardwareProps);
+            Hardware.findByIdAndUpdate(HardwareID, HardwareProps)
             .orFail(() => Error('Hardware not found'))
             .then(hardware => res.send(hardware))
             .catch(next);
+        })
     },
     Delete(req, res, next) {
         const HardwareID = req.params.id;

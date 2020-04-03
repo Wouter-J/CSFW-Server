@@ -16,6 +16,7 @@ routes.delete('/:id', hardwareController.Delete);
 
 //Specs
 routes.get('/:id/spec', hardwareController.ReadSpec);
-routes.post('/:id/spec', hardwareController.AddSpec);
+routes.post('/:id/newSpec', hardwareController.AddNewSpec);
+routes.post('/:id/spec', hardwareController.AddExistingSpec);
 
 module.exports = routes;
