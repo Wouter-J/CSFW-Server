@@ -12,19 +12,20 @@ module.exports = {
             }
         })
     },
-    Create(req, res, next) {
-        const hardwareProps = {
-            Name: req.body.Name,
-            ClientCapacity: req.body.ClientCapacity,
-            ClientsSupported: req.body.ClientsSupported,
-            Specifications: ['']
-        }
-        Hardware.create(hardwareProps, (err, data) => {
-            if(err) {
-                return next(err)
-            } else {
-                res.json(data)
+    Create({ body: { Name, ClientCapacity, ClientsSupported, Specifications}}, res, next){
+        Specs.find({
+            '_id': { $in: Specifications}
+        }, (err, Specifications) => {
+            if(err){
+                console.log(err);
+                return res.status(401).json({message: 'Something went wrong'})
             }
+            Hardware.create({Name, ClientCapacity, ClientsSupported, Specifications}, err => {
+                if(err) { return res.status(401).json({message: 'Something went wrong'}) }
+                else {
+                    res.status(200).json({message: 'Hardware created!'})
+                }
+            });
         });
     },
     ReadSpec(req, res, next) {

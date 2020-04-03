@@ -11,20 +11,21 @@ module.exports = {
             }
         })
     },
-    Create(req, res, next) {
-        const clientProps = {
-            Name: req.body.Name,
-            Firstname: req.body.Firstname,
-            Lastname: req.body.Lastname,
-            Subscriptions: ['']
-        }
-        Clients.create(clientProps, (err, data) => {
-            if(err) {
-                return next(err)
-            } else {
-                res.json(data)
+    Create({ body: { Name, Firstname, Lastname, Subs}}, res, next){
+        Subscriptions.find({
+            '_id': { $in: Subs}
+        }, (err, Subscriptions) => {
+            if(err){
+                console.log(err);
+                return res.status(401).json({message: 'Something went wrong'})
             }
-        });
+            Clients.create({Name, Firstname, Lastname, Subscriptions}, err, data => {
+                if(err) { return res.status(401).json({message: 'Something went wrong'}) }
+                else {
+                    res.status(200).json({message: 'Client created!'})
+                }
+            });
+        })
     },
     Read(req, res, next) {
         const clientID = req.params.id;
@@ -37,7 +38,6 @@ module.exports = {
         Subscriptions.find({
             '_id': { $in: Subs}
         }, (err, Subscriptions) => {
-            console.log(Subscriptions);
             Clients.findByIdAndUpdate(id, {Name, Firstname, Lastname, Subscriptions})
                 .orFail(() => Error('Client or subscription not found'))
                 .then(client => res.status(200).json(client))
