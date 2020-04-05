@@ -12,6 +12,25 @@ stages:
 #  - metrics
   - deploy
 
+variables:
+  - GIT_DEPTH: 0 #Disable shallow clone for sonarqube
+  
+unittests:
+  image: markhobson/node-chrome:latest
+  stage: test
+  variables:
+    NODE_ENV: development
+    # DB_USER: $DB_USER
+    # DB_PASSWORD: $DB_PASSWORD
+    # DB_HOST: $DB_HOST
+    # DB_PORT: $DB_PORT
+    # DB_DATABASE: $DB_DATABASE
+  before_script:
+    - npm install --no-optional
+  script:
+    - npm run test
+    - npm run sonar
+
 #cache:
 #  key: $CI_COMMIT_REF_SLUG
 #  paths:
