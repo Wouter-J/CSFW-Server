@@ -5,9 +5,6 @@ const userSchema = new Schema({
     Username: {
         type: String
     },
-    Birthdate: {
-        type: Date
-    },
     Firstname: {
         type: String
     },
@@ -22,7 +19,6 @@ const userSchema = new Schema({
         enum: ['User', 'Administrator'],
         default: 'User'
     }
-    //TODO: Add link to Specifications Schema
 })
 
 const User = mongoose.model('User', userSchema);

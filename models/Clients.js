@@ -4,8 +4,17 @@ const Schema = mongoose.Schema;
 const clientSchema = new Schema({
     Name: {
         type: String
-    }
-    //TODO: Add link to Products & Services
+    },
+    Firstname: {
+        type: String
+    },
+    Lastname: {
+        type: String
+    },
+    Subscriptions: [{
+        type: Schema.Types.Mixed,
+        ref: 'Subscription'
+    }]
 })
 
 const Client = mongoose.model('Client', clientSchema);

@@ -7,8 +7,11 @@ const subscriptionSchema = new Schema({
     },
     Costs: {
         type: Number
-    }
-    //TODO: Add link to Client Schema
+    },
+    Hardwares: [{
+        type: Schema.Types.Mixed,
+        ref: 'Hardware'
+    }]
 })
 
 const Subscription = mongoose.model('Subscription', subscriptionSchema);

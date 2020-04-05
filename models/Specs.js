@@ -13,7 +13,7 @@ const specifcationSchema = new Schema({
     },
     AmountType: {
         type: String,
-        enum: ['GB', 'TB', 'Other'],
+        enum: ['MB', 'GB', 'TB', 'Other'],
         default: 'GB'
     }
 })
