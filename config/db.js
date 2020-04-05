@@ -30,7 +30,7 @@ mongoose.connection.on("error", error =>{
 //Try again
 mongoose.connection.on("disconnected", () => {
     console.log("Unable to connect to Mongo Database");
-    setTimeout(() => connect(), reconnectTimeout);
+    //setTimeout(() => connect(), reconnectTimeout);
 });
 
 module.exports = mongoose;
