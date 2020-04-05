@@ -1,5 +1,5 @@
 const Clients = require('../models/Clients');
-const Subscriptions = require('../models/Subscriptions');
+const Subs = require('../models/Subscriptions');
 
 module.exports = {
     Index(req, res, next) {
@@ -11,21 +11,21 @@ module.exports = {
             }
         })
     },
-    Create({ body: { Name, Firstname, Lastname, Subs}}, res, next){
-        Subscriptions.find({
-            '_id': { $in: Subs}
+    Create({ body: { Name, Firstname, Lastname, Subscriptions}}, res, next){
+        Subs.find({
+            '_id': { $in: Subscriptions}
         }, (err, Subscriptions) => {
             if(err){
                 console.log(err);
                 return res.status(401).json({message: 'Something went wrong'})
             }
-            Clients.create({Name, Firstname, Lastname, Subscriptions}, err, data => {
+            Clients.create({Name, Firstname, Lastname, Subscriptions}, err => {
                 if(err) { return res.status(401).json({message: 'Something went wrong'}) }
                 else {
-                    res.status(200).json({message: 'Client created!'})
+                   return res.status(200).json({message: 'Client created!'})
                 }
             });
-        })
+        });
     },
     Read(req, res, next) {
         const clientID = req.params.id;
@@ -34,9 +34,9 @@ module.exports = {
             .then(client => res.send(client))
             .catch(next);
     },
-    Edit: ({ body: { Name, Firstname, Lastname, Subs}, params: { id } }, res, next) => {
-        Subscriptions.find({
-            '_id': { $in: Subs}
+    Edit: ({ body: { Name, Firstname, Lastname, Subscriptions}, params: { id } }, res, next) => {
+        Subs.find({
+            '_id': { $in: Subscriptions}
         }, (err, Subscriptions) => {
             Clients.findByIdAndUpdate(id, {Name, Firstname, Lastname, Subscriptions})
                 .orFail(() => Error('Client or subscription not found'))
