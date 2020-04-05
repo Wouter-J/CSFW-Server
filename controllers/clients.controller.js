@@ -12,6 +12,7 @@ module.exports = {
         })
     },
     Create({ body: { Name, Firstname, Lastname, Subscriptions}}, res, next){
+        console.log(Name + Firstname + Lastname + Subscriptions);
         Subs.find({
             '_id': { $in: Subscriptions}
         }, (err, Subscriptions) => {
