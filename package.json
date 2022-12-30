@@ -25,7 +25,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "husky": "^4.2.1",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "nodemon": "^2.0.1",
     "request": "^2.88.2",
     "sonarqube-scanner": "^2.6.0"
